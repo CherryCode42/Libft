@@ -1,59 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iarefeva <iarefeva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 15:28:57 by iarefeva          #+#    #+#             */
-/*   Updated: 2024/05/31 20:54:26 by iarefeva         ###   ########.fr       */
+/*   Updated: 2024/05/31 19:16:40 by iarefeva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa(int n)
+char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*res;
-	int	num;
-	int unsigned_num;
-	int	negative;
-	int	len;
-	int	i;
-		
+	char	*result;
+	size_t	len_s;
+	size_t	i;
 
-	len = 0;
-	negative = 0;
-	num = n;
-	if (n <= 0)
-	{
-		len++;
-		if (n == 0)
-			return ft_strdup("0");
-		if (n == INT_MIN)
-			return ft_strdup("-2147483648");
-		negative = 1;
-		num = - n;
-	}
-	unsigned_num = num;
-	if (n == INT_MAX)
-		return ft_strdup("2147483647");
-	while (num > 0)
-	{
-		num /= 10;
-		len++;
-	}
-	res = (char *)malloc(len + 1);
-	if (!res)
+	if (!s)
 		return (NULL);
-	res[len] = '\0';
-	i = len - 1;
-	while (unsigned_num)
+	i = 0;
+	len_s = ft_strlen(s);
+	result = (char *)malloc(len_s + 1);
+	if (!result)
+		return (NULL);
+	while (s[i])
 	{
-		res[i--] = unsigned_num % 10 + '0';
-		unsigned_num /= 10;
+		result[i] = f(i, s[i]);
+		i++;
 	}
-	if (negative)
-		res[0] = '-';
-	return (res);
+	result[len_s] = '\0';
+	return (result);
 }
