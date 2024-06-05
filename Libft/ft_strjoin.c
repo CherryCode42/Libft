@@ -6,7 +6,7 @@
 /*   By: iarefeva <iarefeva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 15:28:57 by iarefeva          #+#    #+#             */
-/*   Updated: 2024/05/31 15:14:15 by iarefeva         ###   ########.fr       */
+/*   Updated: 2024/06/05 18:37:40 by iarefeva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	len_s2 = ft_strlen(s2);
 	str = (char *)malloc(len_s1 + len_s2 + 1);
 	if (!str)
-		return(NULL);
+		return (NULL);
 	ft_memcpy(str, s1, len_s1);
 	ft_memcpy(str + len_s1, s2, len_s2 + 1);
 	return (str);

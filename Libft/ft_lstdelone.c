@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iarefeva <iarefeva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/21 17:43:58 by iarefeva          #+#    #+#             */
-/*   Updated: 2024/06/05 18:35:31 by iarefeva         ###   ########.fr       */
+/*   Created: 2024/05/22 15:28:57 by iarefeva          #+#    #+#             */
+/*   Updated: 2024/06/05 18:41:28 by iarefeva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	unsigned char	*ps1;
-	unsigned char	*ps2;
-	size_t			i;
-
-	ps1 = (unsigned char *)s1;
-	ps2 = (unsigned char *)s2;
-	i = 0;
-	if (n < 1)
-		return (0);
-	while (ps1[i] == ps2[i] && i < n - 1)
-		i++;
-	return (ps1[i] - ps2[i]);
+	if (!del)
+		return ;
+	if (lst)
+	{
+		(*del)(lst->content);
+		free(lst);
+	}
 }

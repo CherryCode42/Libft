@@ -6,7 +6,7 @@
 /*   By: iarefeva <iarefeva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 15:28:57 by iarefeva          #+#    #+#             */
-/*   Updated: 2024/05/31 20:54:26 by iarefeva         ###   ########.fr       */
+/*   Updated: 2024/06/05 18:06:22 by iarefeva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,11 @@
 char	*ft_itoa(int n)
 {
 	char	*res;
-	int	num;
-	int unsigned_num;
-	int	negative;
-	int	len;
-	int	i;
-		
+	int		num;
+	int		unsigned_num;
+	int		negative;
+	int		len;
+	int		i;
 
 	len = 0;
 	negative = 0;

@@ -6,7 +6,7 @@
 /*   By: iarefeva <iarefeva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 15:50:36 by iarefeva          #+#    #+#             */
-/*   Updated: 2024/05/27 19:30:26 by iarefeva         ###   ########.fr       */
+/*   Updated: 2024/06/05 18:31:48 by iarefeva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,9 @@
 char	*ft_strrchr(const char *s, int c)
 {
 	const char	*last_place;
-	char	a;
+	char		a;
 
 	a = (char)c;
-	
 	last_place = NULL;
 	while (*s != '\0')
 	{

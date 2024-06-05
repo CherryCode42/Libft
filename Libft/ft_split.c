@@ -6,7 +6,7 @@
 /*   By: iarefeva <iarefeva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 15:28:57 by iarefeva          #+#    #+#             */
-/*   Updated: 2024/05/31 19:16:40 by iarefeva         ###   ########.fr       */
+/*   Updated: 2024/06/05 19:00:56 by iarefeva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	count_word(char *str, char c)
 {
 	int	i;
 	int	word;
-	int in_word;
+	int	in_word;
 
 	i = 0;
 	word = 0;
@@ -40,7 +40,7 @@ static int	count_word(char *str, char c)
 char	*ft_strndup(const char *s, size_t n)
 {
 	char	*str;
-	
+
 	str = (char *)malloc(n + 1);
 	if (!str)
 		return (NULL);
@@ -84,7 +84,7 @@ char	**ft_split(char const *s, char c)
 			}
 			j++;
 		}
-	}	
+	}
 	res[j] = NULL;
 	return (res);
 }

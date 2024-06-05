@@ -6,18 +6,18 @@
 /*   By: iarefeva <iarefeva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:01:21 by iarefeva          #+#    #+#             */
-/*   Updated: 2024/05/28 18:34:46 by iarefeva         ###   ########.fr       */
+/*   Updated: 2024/06/05 18:04:09 by iarefeva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-int ft_atoi(const char *nptr)
+int	ft_atoi(const char *nptr)
 {
 	int	i;
 	int	sign;
-	int number;
-	
+	int	number;
+
 	i = 0;
 	sign = 1;
 	number = 0;
