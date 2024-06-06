@@ -11,36 +11,31 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+//#include <stdio.h>
 
-char	*ft_itoa(int n)
+char	*ft_MIN_0_MAX(int n)
+{
+	if (n == 0)
+		return ("0");
+	else if (n == INT_MIN)
+		return ("-2147483648");
+	else if (n == INT_MAX)
+		return ("2147483647");
+	else
+		return (NULL);
+}
+
+char	*ft_res(int len, int n)
 {
 	char	*res;
-	int		num;
 	int		unsigned_num;
-	int		negative;
-	int		len;
 	int		i;
 
-	len = 0;
-	negative = 0;
-	num = n;
-	if (n <= 0)
+	unsigned_num = n;
+	if (n < 0)
 	{
 		len++;
-		if (n == 0)
-			return ft_strdup("0");
-		if (n == INT_MIN)
-			return ft_strdup("-2147483648");
-		negative = 1;
-		num = - n;
-	}
-	unsigned_num = num;
-	if (n == INT_MAX)
-		return ft_strdup("2147483647");
-	while (num > 0)
-	{
-		num /= 10;
-		len++;
+		unsigned_num *= -1;
 	}
 	res = (char *)malloc(len + 1);
 	if (!res)
@@ -52,7 +47,41 @@ char	*ft_itoa(int n)
 		res[i--] = unsigned_num % 10 + '0';
 		unsigned_num /= 10;
 	}
-	if (negative)
+	if (n <= 0)
 		res[0] = '-';
 	return (res);
 }
+
+char	*ft_itoa(int n)
+{
+	char	*res;
+	int		num;
+	int		len;
+	
+	len = 0;
+	num = n;
+	if (ft_MIN_0_MAX(n))
+	{
+		return (ft_strdup(ft_MIN_0_MAX(n)));
+	}
+	if (n < 0)
+		num = - n;
+	while (num > 0)
+	{
+		num /= 10;
+		len++;
+	}
+	res = ft_res(len, n);
+	if (!res)
+		return (NULL);
+	return (res);
+}
+
+/*int	main()
+{
+	printf("%s\n", ft_itoa(42));
+	printf("%s\n", ft_itoa(2147483647));
+	printf("%s\n", ft_itoa(-2147483648));
+	printf("%s\n", ft_itoa(0));
+	return (0);
+}*/
