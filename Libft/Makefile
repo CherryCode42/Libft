@@ -12,8 +12,11 @@
 
 NAME = libft.a
 
+OBJ_PATH = ./obj/
+
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
+INCLUDES = -I./
 
 SRCS = 	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_atoi.c\
 	ft_toupper.c ft_tolower.c ft_strncmp.c ft_memcmp.c ft_strlen.c ft_strlcpy.c\
@@ -22,32 +25,35 @@ SRCS = 	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_atoi
 	ft_strchr.c ft_strrchr.c ft_strnstr.c ft_strdup.c ft_substr.c ft_strjoin.c ft_strtrim.c\
 	ft_split.c ft_itoa.c ft_strmapi.c
 
-OBJS = $(SRCS:.c=.o)
+OBJS = $(addprefix $(OBJ_PATH), $(SRCS:.c=.o))
 
 BONUS_SRCS =	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c\
  ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c\
  ft_lstiter.c ft_lstmap.c
 
-BONUS_OBJS = $(BONUS_SRCS:.c=.o)
+BONUS_OBJS = $(addprefix $(OBJ_PATH), $(BONUS_SRCS:.c=.o))
 
 all :	$(NAME)
-	
-$(NAME) :
-	@$(CC) $(CFLAGS) -c $(SRCS) -I./
+
+# Objects directory rule
+$(OBJ_PATH):
+	mkdir -p $(OBJ_PATH)
+
+$(OBJ_PATH)%.o: %.c | $(OBJ_PATH)
+	$(CC) $(INCLUDES) $(CFLAGS) -c $< -o $@
+
+$(NAME) : $(OBJS)
 	@ar -rcs $(NAME) $(OBJS)
 
-%.o: %.c
-	@$(CC) $(CFLAGS) -c $< -o $@
-
 clean :
-	@rm -f $(OBJS) $(BONUS_OBJS)
+	@rm -rf $(OBJ_PATH)
 
 fclean :	clean
 	@rm -f $(NAME)
 
 re :	fclean	all
 
-bonus:	$(BONUS_OBJS)
+bonus:	$(OBJS) $(BONUS_OBJS)
 	@ar -rcs $(NAME) $(BONUS_OBJS)
 
 .PHONY: all clean fclean re bonus
